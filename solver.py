@@ -3,10 +3,27 @@ import sys
 from numpy import linalg as la
 
 from gauss import *
-from utils import formatting, str_to_row, get_step_and_master_count
+from utils import formatting, str_to_row, format_action, get_step_and_master_count
 
 inp = open('input.txt', 'r')
 out = open('output.txt', 'w')
+
+
+def _do_inversion(com, rws):
+    """
+    Print formatting messages and call gauss elimination
+    :param com: communicator
+    :param rws: rows
+    :return: inversed rows
+    """
+    print formatting(com.rank, format_action('receive', rws))
+
+    inv = gauss(np.array(rws, dtype=np.float64), com, n)
+
+    print formatting(com.rank, format_action('inverse', inv))
+
+    return inv
+
 
 comm = MPI.COMM_WORLD
 master = 0
@@ -38,6 +55,8 @@ if comm.rank == master:
             comm.send(A[cur + i] + [cur + i], dest=proc)  # send row with index as last element
         cur += step
 
+    inversed = _do_inversion(comm, rows)
+
 else:
     n = comm.bcast(None, root=master)
     step = n / comm.size
@@ -47,3 +66,5 @@ else:
 
     for i in range(step):
         rows.append(comm.recv(source=master))
+
+    inversed = _do_inversion(comm, rows)

@@ -6,11 +6,24 @@ def str_to_row(s):
 
 
 def get_step_and_master_count(n, size):
+    """
+    Count number of rows per process
+    :param n: matrix dimension
+    :param size: number of process
+    :return: number of rows for slave and for master
+    """
     step = n / size
     return step, step + n % size
 
 
 def rank_from_row(n, size, i):
+    """
+    Count rank of process that work with row
+    :param n: matrix dimension
+    :param size: number of process
+    :param i: row index
+    :return: process rank
+    """
     step, master_count = get_step_and_master_count(n, size)
 
     if i < master_count:
