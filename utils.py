@@ -2,7 +2,7 @@ import time
 
 
 def str_to_row(s):
-    return [int(x) for x in s.split()]
+    return [int(x) for x in s.split()][:-1]
 
 
 def get_step_and_master_count(n, size):
@@ -54,11 +54,25 @@ def formatting(rank, message):
     )
 
 
-def format_action(action, rows):
-    if len(rows) < 4 and len(rows[0]) < 10:
-        return '\t*{0}*\t{1} rows: {2}'.format(action, len(rows), [x[:-1] for x in rows])
-    else:
-        return '\t*{0}*\t{1} rows'.format(action, len(rows))
+def format_action(action, rows=None, x=None):
+    template = '\t*{0}*\t'
+    args = [action]
+    if rows:
+        template += '{1} rows'
+        args.append(len(rows))
+        if len(rows) < 4 and len(rows[0]) < 10:
+            template += ': {2}'
+            args.append([row[:-1] for row in rows])
+    if x and len(x) < 10:
+        template += '{1}x = {2}{3}'
+        args += [Colors.OKBLUE, x, Colors.ENDC]
+    return template.format(*args)
+
+
+def write_matrix(matrix, out):
+    out.write('{}\n'.format(len(matrix)))
+    for row in matrix:
+        out.write(('{:.3f}\t' * len(matrix) + '\n').format(*row))
 
 
 class Timer:
@@ -67,4 +81,4 @@ class Timer:
         self.start = time.time()
 
     def finish(self):
-        print "\n{0}: {1:.3f} s\n".format(self.message, (time.time() - self.start)) + "-" * 50
+        print "-" * 20 + "| {0}: {1:.3f} s |".format(self.message, (time.time() - self.start)) + "-" * 20
