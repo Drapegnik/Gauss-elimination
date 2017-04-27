@@ -1,4 +1,6 @@
 # Gauss-elimination
+[![Code Climate](https://codeclimate.com/github/Drapegnik/Gauss-elimination/badges/gpa.svg)](https://codeclimate.com/github/Drapegnik/Gauss-elimination) [![Issue Count](https://codeclimate.com/github/Drapegnik/Gauss-elimination/badges/issue_count.svg)](https://codeclimate.com/github/Drapegnik/Gauss-elimination)
+
 :rocket: multithread solving linear system with Gauss-Jordan elimination
 
 **requirements**:
