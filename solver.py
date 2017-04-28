@@ -16,11 +16,11 @@ def _do_inversion(com, rws):
     :param rws: rows
     :return: inversed rows
     """
-    print formatting(com.rank, format_action('receive', rows=rws))
+    print(formatting(com.rank, format_action('receive', rows=rws)))
 
     inv = gauss(np.array(rws, dtype=np.float64), com, n)
 
-    print formatting(com.rank, format_action('inverse', rows=inv))
+    print(formatting(com.rank, format_action('inverse', rows=inv)))
 
     return inv
 
@@ -43,7 +43,7 @@ if comm.rank == master:
     t_inv = Timer('inversion')
 
     if not det:
-        print formatting(comm.rank, 'ERROR! det A = {} - there is no inversion'.format(det))
+        print(formatting(comm.rank, 'ERROR! det A = {} - there is no inversion'.format(det)))
         comm.bcast(0, root=master)
         sys.exit()
 
@@ -68,12 +68,12 @@ if comm.rank == master:
 
     A_inv.sort(key=lambda row: row[-1])
     A_inv = np.delete(A_inv, -1, 1)
-    print formatting(comm.rank, format_action('merge results'))
+    print(formatting(comm.rank, format_action('merge results')))
     t_inv.finish()
     write_matrix(A_inv, out)
 
     x = np.dot(A_inv, b)
-    print formatting(comm.rank, format_action('product A_inv on b', x=x.tolist()))
+    print(formatting(comm.rank, format_action('product A_inv on b', x=x.tolist())))
     out.write(('{}\n'+'{:.3f}\t'*len(x)).format(1, *x))
 
     t.finish()

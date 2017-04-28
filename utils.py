@@ -33,7 +33,7 @@ def rank_from_row(n, size, i):
     return 1 + i // step
 
 
-class Colors:
+class Colors(object):
     HEADER = '\033[1;95m'
     OKBLUE = '\033[1;94m'
     OKGREEN = '\033[1;92m'
@@ -75,10 +75,10 @@ def write_matrix(matrix, out):
         out.write(('{:.3f}\t' * len(matrix) + '\n').format(*row))
 
 
-class Timer:
+class Timer(object):
     def __init__(self, message):
         self.message = message
         self.start = time.time()
 
     def finish(self):
-        print "-" * 20 + "| {0}: {1:.3f} s |".format(self.message, (time.time() - self.start)) + "-" * 20
+        print("-" * 20 + "| {0}: {1:.3f} s |".format(self.message, (time.time() - self.start)) + "-" * 20)
