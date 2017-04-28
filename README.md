@@ -1,4 +1,5 @@
 # Gauss-elimination
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9aa197ad25294a3cbd491ded8311e75e)](https://www.codacy.com/app/Drapegnik/Gauss-elimination?utm_source=github.com&utm_medium=referral&utm_content=Drapegnik/Gauss-elimination&utm_campaign=badger)
 [![Code Climate](https://codeclimate.com/github/Drapegnik/Gauss-elimination/badges/gpa.svg)](https://codeclimate.com/github/Drapegnik/Gauss-elimination) [![Issue Count](https://codeclimate.com/github/Drapegnik/Gauss-elimination/badges/issue_count.svg)](https://codeclimate.com/github/Drapegnik/Gauss-elimination)
 
 :rocket: multithread solving linear system with Gauss-Jordan elimination
