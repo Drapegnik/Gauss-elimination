@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 """
     usage: python gen.py {matrix_size} {max_element_value}
     return: A | b matrix, where rank A = {matrix_size}
