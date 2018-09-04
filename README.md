@@ -8,8 +8,8 @@
 
 **requirements**:
 
-* [python](https://www.python.org/)
-* use `pip install requirements.txt` for [numpy](http://www.numpy.org/) &
+- [python](https://www.python.org/)
+- use `pip install requirements.txt` for [numpy](http://www.numpy.org/) &
   [mpi4py](http://pythonhosted.org/mpi4py/)
 
 **run**:
@@ -26,14 +26,14 @@ $ ./run.sh {matrix_dimension} {values_range} {number_of_procces}
 
 **for example**: `$ bash run.sh 3 10 3`:
 
-* generate random matrix `A` with size `(3,3)` and vector `b`
-* for `A` find inversed matrix `A_inv` using `3` process
-* solve equation like `x = A_inv * b`
-* write ouputs, count time
+- generate random matrix `A` with size `(3,3)` and vector `b`
+- for `A` find inversed matrix `A_inv` using `3` process
+- solve equation like `x = A_inv * b`
+- write ouputs, count time
 
 <img src="http://res.cloudinary.com/dzsjwgjii/image/upload/v1479125055/lab2.png" width=900px/>
 
 **Notes**
 
-* for direct input use `input.txt`
-* inverse matrix and vector `x` stored in `output.txt`
+- for direct input use `input.txt`
+- inverse matrix and vector `x` stored in `output.txt`
